@@ -28,7 +28,7 @@ class ContactTest < ActiveSupport::TestCase
     contact.save
 
     # contact should NOT have been saved (no company_id)
-    assert_equal 0, Contact.all.count
+    assert_equal 0, Contact.all.count #expected count is 0 then contact cannot be created
   end
 
   test "contact with company_id should save" do

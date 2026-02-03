@@ -55,16 +55,28 @@ new_company.save
 
 cali_companies = Company.where({"state" => "California"})
 # p cali_companies
-puts "Number of Cali Companies: #{cali_companies.count}"
+# puts "Number of Cali Companies: #{cali_companies.count}"
 
 # 4. query companies table to find single row for Apple
 apple_info = Company.find_by({"name" => "Apple"}) #where statement always returns an array
-p apple_info 
+# p apple_info 
 
 # 5. read a row's column value
-puts apple_info["url"]
+# puts apple_info["url"]
 
 
 # 6. update a row's column value
+apple_info["url"] = "https://apple.com"
+apple_info.save
+# p Company.find_by({"name" => "Apple"})
 
 # 7. delete a row
+# apple_info.destroy
+
+puts "Companies in db: #{Company.all.count}"
+expected_count_comps = 2
+if expected_count_comps !=Company.all.count
+  puts "PROBLEM!!"
+  else
+    puts "SUCCESS"
+end
